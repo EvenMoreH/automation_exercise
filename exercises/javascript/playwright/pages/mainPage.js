@@ -29,7 +29,7 @@ export class MainPage {
     }
 
     async expectLoaded() {
-        expect(this.page.url()).toBe("https://automationexercise.com/");
+        await expect(this.page).toHaveURL("https://automationexercise.com/");
         await expect(this.logo).toBeVisible();
     }
 

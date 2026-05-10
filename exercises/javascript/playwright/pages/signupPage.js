@@ -50,14 +50,14 @@ export class SignupPage {
 
     /**
      *
-     * @param {number} day - The day of the month (1-31).
+     * @param {string} day - The day of the month (1-31).
      * @param {string} month - The full name of the month (e.g., "January", "February").
-     * @param {number} year - The year (e.g., 1900-2021).
+     * @param {string} year - The year (e.g., 1900-2021).
      */
     async selectDateOfBirth(day, month, year) {
-        await this.daysSelect.selectOption(day.toString());
+        await this.daysSelect.selectOption(day);
         await this.monthsSelect.selectOption(month);
-        await this.yearsSelect.selectOption(year.toString());
+        await this.yearsSelect.selectOption(year);
     }
 
     async setNewsletterSubscription() {

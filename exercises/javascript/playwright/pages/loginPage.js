@@ -11,9 +11,17 @@ export class LoginPage {
         this.signUpFormTitle = this.page.getByRole("heading", {
             name: "New User Signup",
         });
-        this.nameInput = this.signUpForm.getByPlaceholder("Name");
-        this.emailInput = this.signUpForm.getByPlaceholder("Email Address");
+        this.signupNameInput = this.signUpForm.getByPlaceholder("Name");
+        this.signupEmailInput =
+            this.signUpForm.getByPlaceholder("Email Address");
         this.signupButton = this.page.getByRole("button", { name: "Signup" });
+        this.loginForm = page.locator(".login-form");
+        this.loginFormTitle = this.page.getByRole("heading", {
+            name: "Login to your account",
+        });
+        this.loginEmailInput = this.loginForm.getByPlaceholder("Email Address");
+        this.loginPasswordInput = this.loginForm.getByPlaceholder("Password");
+        this.loginButton = this.page.getByRole("button", { name: "Login" });
     }
 
     async expectLoaded() {
@@ -21,11 +29,20 @@ export class LoginPage {
     }
 
     async fillSignupForm(name, email) {
-        await this.nameInput.fill(name);
-        await this.emailInput.fill(email);
+        await this.signupNameInput.fill(name);
+        await this.signupEmailInput.fill(email);
     }
 
     async submitSignupForm() {
         await this.signupButton.click();
+    }
+
+    async fillLoginForm(email, password) {
+        await this.loginEmailInput.fill(email);
+        await this.loginPasswordInput.fill(password);
+    }
+
+    async submitLoginForm() {
+        await this.loginButton.click();
     }
 }
