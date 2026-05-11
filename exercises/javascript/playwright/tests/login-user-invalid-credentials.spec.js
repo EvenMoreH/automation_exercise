@@ -1,6 +1,4 @@
-import { test, expect } from "@playwright/test";
-import { MainPage } from "../pages/mainPage";
-import { LoginPage } from "../pages/loginPage";
+import { test, expect } from "../fixtures";
 
 const invalidCredentials = [
     {
@@ -21,13 +19,13 @@ const invalidCredentials = [
 ];
 
 invalidCredentials.forEach(({ case: caseName, email, password }) => {
-    test(`user login with ${caseName}`, async ({ page }) => {
-        const mainPage = new MainPage(page);
-        const loginPage = new LoginPage(page);
-
+    test(`user login with ${caseName}`, async ({
+        mainPage,
+        loginPage,
+        page,
+    }) => {
         await test.step("open main page", async () => {
             await mainPage.open();
-            await mainPage.acceptCookiesModal();
             await mainPage.expectLoaded();
         });
 

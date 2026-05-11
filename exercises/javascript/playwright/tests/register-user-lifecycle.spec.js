@@ -1,40 +1,17 @@
-import { test, expect } from "@playwright/test";
-import { MainPage } from "../pages/mainPage";
-import { LoginPage } from "../pages/loginPage";
-import { SignupPage } from "../pages/signupPage";
-import { AccountCreatedPage } from "../pages/accountCreatedPage";
-import { DeleteAccountPage } from "../pages/deleteAccountPage";
+import { test, expect } from "../fixtures";
+import { buildUser } from "../factories/user.factory";
 
-test("register user", async ({ page }) => {
-    const testUser = {
-        name: "John Doe",
-        email: `john.doe.${Date.now()}@example.com`,
-        title: "Mr.",
-        password: "password123",
-        dayOfBirth: "15",
-        monthOfBirth: "January",
-        yearOfBirth: "1990",
-        firstName: "John",
-        lastName: "Doe",
-        company: "Example Inc.",
-        address1: "123 Main St",
-        address2: "Apt 4B",
-        country: "United States",
-        state: "California",
-        city: "Los Angeles",
-        zipcode: "90001",
-        mobileNumber: "+1234567890",
-    };
-
-    const mainPage = new MainPage(page);
-    const loginPage = new LoginPage(page);
-    const signupPage = new SignupPage(page);
-    const accountCreatedPage = new AccountCreatedPage(page);
-    const deleteAccountPage = new DeleteAccountPage(page);
+test("register user", async ({
+    mainPage,
+    loginPage,
+    signupPage,
+    accountCreatedPage,
+    deleteAccountPage,
+}) => {
+    const testUser = buildUser();
 
     await test.step("open main page", async () => {
         await mainPage.open();
-        await mainPage.acceptCookiesModal();
         await mainPage.expectLoaded();
     });
 

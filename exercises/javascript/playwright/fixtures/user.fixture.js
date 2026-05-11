@@ -1,4 +1,4 @@
-import { test as base, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 
 async function deleteUserByApi(request, email, password) {
     const deleteResponse = await request.delete(
@@ -19,7 +19,7 @@ async function deleteUserByApi(request, email, password) {
     expect(deleteResponseBody.message).toBe("Account deleted!");
 }
 
-export const test = base.extend({
+export const userFixture = {
     cleanupUserWithApi: [true, { option: true }],
     testUser: async ({ page, cleanupUserWithApi }, use) => {
         const timestamp = Date.now();
@@ -71,6 +71,4 @@ export const test = base.extend({
             );
         }
     },
-});
-
-export { expect };
+};

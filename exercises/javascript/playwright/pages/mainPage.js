@@ -18,14 +18,15 @@ export class MainPage {
         });
     }
 
-    async open() {
-        await this.page.goto("https://automationexercise.com");
-    }
-
     async acceptCookiesModal() {
         if (await this.cookiesBannerButton.isVisible()) {
             await this.cookiesBannerButton.click();
         }
+    }
+
+    async open() {
+        await this.page.goto("https://automationexercise.com");
+        await this.acceptCookiesModal();
     }
 
     async expectLoaded() {

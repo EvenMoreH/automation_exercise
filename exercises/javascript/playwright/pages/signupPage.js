@@ -110,4 +110,25 @@ export class SignupPage {
     async submitCreateAccountForm() {
         await this.createAccountButton.click();
     }
+
+    async registerNewUser() {
+        await this.selectTitle(title);
+        await this.fillPassword(password);
+        await this.selectDateOfBirth(day, month, year);
+        await this.setNewsletterSubscription();
+        await this.setSpecialOffersSubscription();
+        await this.fillAddressInformation({
+            firstName,
+            lastName,
+            company,
+            address1,
+            address2,
+            country,
+            state,
+            city,
+            zipcode,
+            mobileNumber,
+        });
+        await this.createAccountButton.click();
+    }
 }

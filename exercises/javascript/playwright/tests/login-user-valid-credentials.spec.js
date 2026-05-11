@@ -1,18 +1,15 @@
-import { test, expect } from "../fixtures/user.fixture";
-import { MainPage } from "../pages/mainPage";
-import { LoginPage } from "../pages/loginPage";
-import { DeleteAccountPage } from "../pages/deleteAccountPage";
+import { test, expect } from "../fixtures";
 
 test.use({ cleanupUserWithApi: false });
 
-test("user login with valid credentials", async ({ page, testUser }) => {
-    const mainPage = new MainPage(page);
-    const loginPage = new LoginPage(page);
-    const deleteAccountPage = new DeleteAccountPage(page);
-
+test("user login with valid credentials", async ({
+    mainPage,
+    loginPage,
+    deleteAccountPage,
+    testUser,
+}) => {
     await test.step("open main page", async () => {
         await mainPage.open();
-        await mainPage.acceptCookiesModal();
         await mainPage.expectLoaded();
     });
 
