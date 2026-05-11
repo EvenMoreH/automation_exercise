@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 
-async function deleteUserByApi(request, email, password) {
+async function sendDeleteUserRequest(request, email, password) {
     const deleteResponse = await request.delete(
         "https://automationexercise.com/api/deleteAccount",
         {
@@ -13,15 +13,26 @@ async function deleteUserByApi(request, email, password) {
 
     expect(deleteResponse.status()).toBe(200);
 
-    const deleteResponseBody = await deleteResponse.json();
+    return deleteResponse.json();
+}
 
-    expect(deleteResponseBody.responseCode).toBe(200);
-    expect(deleteResponseBody.message).toBe("Account deleted!");
+async function cleanupUserByApi(request, email, password) {
+    const deleteResponseBody = await sendDeleteUserRequest(
+        request,
+        email,
+        password,
+    );
+
+    const isDeleted =
+        deleteResponseBody.responseCode === 200 &&
+        deleteResponseBody.message === "Account deleted!";
+    const isAlreadyMissing = deleteResponseBody.responseCode === 404;
+
+    expect(isDeleted || isAlreadyMissing).toBeTruthy();
 }
 
 export const userFixture = {
-    cleanupUserWithApi: [true, { option: true }],
-    testUser: async ({ page, cleanupUserWithApi }, use) => {
+    testUser: async ({ page }, use) => {
         const timestamp = Date.now();
         const testUser = {
             name: `John Doe ${timestamp}`,
@@ -63,12 +74,6 @@ export const userFixture = {
             name: testUser.name,
         });
 
-        if (cleanupUserWithApi) {
-            await deleteUserByApi(
-                page.request,
-                testUser.email,
-                testUser.password,
-            );
-        }
+        await cleanupUserByApi(page.request, testUser.email, testUser.password);
     },
 };

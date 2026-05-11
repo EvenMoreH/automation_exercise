@@ -1,7 +1,5 @@
 import { test, expect } from "../fixtures";
 
-test.use({ cleanupUserWithApi: false });
-
 test("user login with valid credentials", async ({
     mainPage,
     loginPage,
