@@ -22,6 +22,9 @@ export class LoginPage {
         this.loginEmailInput = this.loginForm.getByPlaceholder("Email Address");
         this.loginPasswordInput = this.loginForm.getByPlaceholder("Password");
         this.loginButton = this.page.getByRole("button", { name: "Login" });
+        this.badCredentialsError = this.loginForm.getByText(
+            "Your email or password is incorrect!",
+        );
     }
 
     async expectLoaded() {
