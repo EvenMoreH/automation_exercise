@@ -5,7 +5,7 @@ import { SignupPage } from "../pages/signupPage";
 import { AccountCreatedPage } from "../pages/accountCreatedPage";
 import { DeleteAccountPage } from "../pages/deleteAccountPage";
 
-test("Register user", async ({ page }) => {
+test("register user", async ({ page }) => {
     const testUser = {
         name: "John Doe",
         email: `john.doe.${Date.now()}@example.com`,
@@ -32,7 +32,7 @@ test("Register user", async ({ page }) => {
     const accountCreatedPage = new AccountCreatedPage(page);
     const deleteAccountPage = new DeleteAccountPage(page);
 
-    await test.step("Open main page", async () => {
+    await test.step("open main page", async () => {
         await mainPage.open();
         await mainPage.acceptCookiesModal();
         await mainPage.expectLoaded();

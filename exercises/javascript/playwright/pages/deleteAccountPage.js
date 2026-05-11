@@ -7,6 +7,7 @@ export class DeleteAccountPage {
      */
     constructor(page) {
         this.page = page;
+        this.logo = page.getByAltText("Website for automation practice");
         this.successHeader = page.getByRole("heading", {
             name: "ACCOUNT DELETED!",
         });
@@ -15,6 +16,7 @@ export class DeleteAccountPage {
 
     async expectLoaded() {
         await expect(this.page).toHaveURL(/\/delete_account$/);
+        await expect(this.logo).toBeVisible();
     }
 
     async clickContinue() {

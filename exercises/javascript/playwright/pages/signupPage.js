@@ -7,6 +7,7 @@ export class SignupPage {
      */
     constructor(page) {
         this.page = page;
+        this.logo = page.getByAltText("Website for practice automation");
         this.pageFormTitle = this.page.getByRole("heading", {
             name: "ENTER ACCOUNT INFORMATION",
         });
@@ -33,6 +34,7 @@ export class SignupPage {
 
     async expectLoaded() {
         await expect(this.page).toHaveURL(/\/signup$/);
+        await expect(this.logo).toBeVisible();
     }
 
     /**
