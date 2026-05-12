@@ -16,6 +16,7 @@ export class MainPage {
         this.deleteAccountLink = page.getByRole("link", {
             name: "Delete Account",
         });
+        this.logoutLink = page.getByRole("link", { name: "Logout" });
     }
 
     async acceptCookiesModal() {
@@ -46,5 +47,9 @@ export class MainPage {
 
     async clickDeleteAccountLink() {
         await this.deleteAccountLink.click();
+    }
+
+    async clickLogoutLink() {
+        await this.logoutLink.click();
     }
 }

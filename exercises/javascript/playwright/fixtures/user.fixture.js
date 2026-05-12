@@ -34,6 +34,7 @@ async function cleanupUserByApi(request, email, password) {
 export const userFixture = {
     testUser: async ({ page }, use) => {
         const timestamp = Date.now();
+
         const testUser = {
             name: `John Doe ${timestamp}`,
             email: `testuser_${timestamp}@example.com`,
