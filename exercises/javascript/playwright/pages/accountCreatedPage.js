@@ -17,7 +17,7 @@ export class AccountCreatedPage {
     }
 
     async expectLoaded() {
-        await expect(this.page).toHaveURL("/account_created/");
+        await expect(this.page).toHaveURL("/account_created");
         await expect(this.logo).toBeVisible();
     }
 
