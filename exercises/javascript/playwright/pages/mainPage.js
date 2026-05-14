@@ -21,6 +21,9 @@ export class MainPage {
         this.testCasesLink = page
             .locator(".navbar-nav")
             .getByRole("link", { name: "Test Cases" });
+        this.productsLink = page
+            .locator(".navbar-nav")
+            .getByRole("link", { name: "Products" });
     }
 
     async acceptCookiesModal() {
@@ -63,5 +66,9 @@ export class MainPage {
 
     async clickTestCasesLink() {
         await this.testCasesLink.click();
+    }
+
+    async clickProductsLink() {
+        await this.productsLink.click();
     }
 }
