@@ -18,6 +18,9 @@ export class MainPage {
         });
         this.logoutLink = page.getByRole("link", { name: "Logout" });
         this.contactUsLink = page.getByRole("link", { name: "Contact us" });
+        this.testCasesLink = page
+            .locator(".navbar-nav")
+            .getByRole("link", { name: "Test Cases" });
     }
 
     async acceptCookiesModal() {
@@ -56,5 +59,9 @@ export class MainPage {
 
     async clickContactUsLink() {
         await this.contactUsLink.click();
+    }
+
+    async clickTestCasesLink() {
+        await this.testCasesLink.click();
     }
 }
