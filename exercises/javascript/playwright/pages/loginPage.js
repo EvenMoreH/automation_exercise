@@ -16,6 +16,10 @@ export class LoginPage {
         this.signupEmailInput =
             this.signUpForm.getByPlaceholder("Email Address");
         this.signupButton = this.page.getByRole("button", { name: "Signup" });
+        this.userExistsError = this.signUpForm.getByText(
+            "Email Address already exist!",
+        );
+
         this.loginForm = page.locator(".login-form");
         this.loginFormTitle = this.page.getByRole("heading", {
             name: "Login to your account",
@@ -29,7 +33,7 @@ export class LoginPage {
     }
 
     async expectLoaded() {
-        await expect(this.page).toHaveURL(/\/login$/);
+        await expect(this.page).toHaveURL("/login");
         await expect(this.logo).toBeVisible();
     }
 

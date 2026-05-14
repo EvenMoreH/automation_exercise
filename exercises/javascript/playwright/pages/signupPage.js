@@ -33,7 +33,7 @@ export class SignupPage {
     }
 
     async expectLoaded() {
-        await expect(this.page).toHaveURL(/\/signup$/);
+        await expect(this.page).toHaveURL("/signup");
         await expect(this.logo).toBeVisible();
     }
 

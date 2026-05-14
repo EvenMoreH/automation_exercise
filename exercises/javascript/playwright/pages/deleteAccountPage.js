@@ -15,7 +15,7 @@ export class DeleteAccountPage {
     }
 
     async expectLoaded() {
-        await expect(this.page).toHaveURL(/\/delete_account$/);
+        await expect(this.page).toHaveURL("/delete_account/");
         await expect(this.logo).toBeVisible();
     }
 

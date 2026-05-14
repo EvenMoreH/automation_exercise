@@ -43,7 +43,7 @@ invalidCredentials.forEach(({ case: caseName, email, password }) => {
         });
 
         await test.step("verify invalid credentials error message is displayed", async () => {
-            await expect(page).toHaveURL(/\/login$/);
+            await expect(page).toHaveURL("/login");
             await expect(loginPage.badCredentialsError).toBeVisible();
             await expect(mainPage.loggedInUserLink).not.toBeVisible();
             await expect(mainPage.deleteAccountLink).not.toBeVisible();
