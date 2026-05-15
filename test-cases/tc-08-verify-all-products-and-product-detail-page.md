@@ -8,10 +8,4 @@
 6. The products list is visible
 7. Click on 'View Product' of first product
 8. User is landed to product detail page
-9. Verify that detail detail is visible: product name, category, price, availability, condition, brand
-
-<!--
-TODO:
-start with opening first product,
-enhance to open each product and validate
--->
+9. Verify that product details are visible: product name, category, price, availability, condition, brand, image

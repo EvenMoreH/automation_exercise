@@ -6,6 +6,7 @@ import { DeleteAccountPage } from "../pages/deleteAccountPage";
 import { ContactUsPage } from "../pages/contactUsPage";
 import { TestCasesPage } from "../pages/testCasesPage";
 import { ProductsPage } from "../pages/productsPage";
+import { ProductDetailsPage } from "../pages/productDetailsPage";
 
 export const pagesFixture = {
     mainPage: async ({ page }, use) => {
@@ -31,5 +32,8 @@ export const pagesFixture = {
     },
     productsPage: async ({ page }, use) => {
         await use(new ProductsPage(page));
+    },
+    productDetailsPage: async ({ page }, use) => {
+        await use(new ProductDetailsPage(page));
     },
 };

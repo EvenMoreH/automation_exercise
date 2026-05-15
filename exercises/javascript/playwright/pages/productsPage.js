@@ -17,4 +17,8 @@ export class ProductsPage {
         await expect(this.page).toHaveURL("/products");
         await expect(this.logo).toBeVisible();
     }
+
+    async openNthProduct(productId) {
+        await this.productLink.nth(productId - 1).click();
+    }
 }

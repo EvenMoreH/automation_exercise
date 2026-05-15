@@ -13,6 +13,7 @@ import { adsFixture } from "../fixtures/ads.fixture";
  *   contactUsPage: Page,
  *   testCasePage: Page,
  *   productsPage: Page,
+ *   productDetailsPage: Page,
  *   testUser: { email: string; password: string; name: string }
  * }>}
  */
