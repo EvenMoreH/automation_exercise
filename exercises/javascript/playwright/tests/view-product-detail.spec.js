@@ -24,6 +24,7 @@ for (const productNumber of productNumbersToTest) {
             await productsPage.expectLoaded();
 
             await expect(productsPage.productsList).toBeVisible();
+            await expect(productsPage.productsListTitle).toBeVisible();
             const productCards = await productsPage.productCard.count();
             expect(productCards).toBeGreaterThan(0);
         });
