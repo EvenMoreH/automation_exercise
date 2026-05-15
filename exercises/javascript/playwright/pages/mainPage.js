@@ -24,6 +24,13 @@ export class MainPage {
         this.productsLink = page
             .locator(".navbar-nav")
             .getByRole("link", { name: "Products" });
+        this.footer = page.locator("#footer");
+        this.subscribeHeading = this.footer.getByRole("heading", {
+            name: "Subscription",
+        });
+        this.subscriptionEmailInput = this.footer.locator("#susbscribe_email");
+        this.subscribeButton = this.footer.locator("#subscribe");
+        this.subscribedSuccessMessage = this.footer.locator(".alert-success");
     }
 
     async acceptCookiesModal() {
@@ -70,5 +77,14 @@ export class MainPage {
 
     async clickProductsLink() {
         await this.productsLink.click();
+    }
+
+    async scrollToFooter() {
+        await this.footer.scrollIntoViewIfNeeded();
+    }
+
+    async subscribeToNewsletter(email) {
+        await this.subscriptionEmailInput.fill(email);
+        await this.subscribeButton.click();
     }
 }
