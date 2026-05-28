@@ -24,6 +24,9 @@ export class MainPage {
         this.productsLink = page
             .locator(".navbar-nav")
             .getByRole("link", { name: "Products" });
+        this.cartLink = page
+            .locator(".navbar-nav")
+            .getByRole("link", { name: "Cart" });
         this.footer = page.locator("#footer");
         this.subscribeHeading = this.footer.getByRole("heading", {
             name: "Subscription",
@@ -77,6 +80,10 @@ export class MainPage {
 
     async clickProductsLink() {
         await this.productsLink.click();
+    }
+
+    async clickCartLink() {
+        await this.cartLink.click();
     }
 
     async scrollToFooter() {
